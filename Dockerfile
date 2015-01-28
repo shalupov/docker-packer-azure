@@ -1,4 +1,5 @@
 FROM ubuntu:14.04
+MAINTAINER lukewpatterson
 
 ENV PACKER_BIN_DIR=/packer/bin
 ENV PACKER_FILES_DIR=/packer/files
