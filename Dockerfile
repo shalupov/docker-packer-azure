@@ -34,6 +34,17 @@ RUN wget --directory-prefix $HOME/downloads https://storage.googleapis.com/golan
   && go install github.com/MSOpenTech/packer-azure/packer/plugin/packer-provisioner-azure-custom-script-extension \
   && mv $GOPATH/bin/* $PACKER_BIN_DIR
 
+# see https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server
+RUN apt-get --yes install software-properties-common python-software-properties \
+  && add-apt-repository ppa:chris-lea/node.js \
+  && apt-get update \
+  && apt-get install --yes nodejs
+
+RUN npm install --global azure-cli \
+  && apt-get install --yes bash-completion \
+  && azure --completion >> ~/azure.completion.sh \
+  && echo 'source ~/azure.completion.sh' >> ~/.bashrc
+
 
 WORKDIR $PACKER_FILES_DIR
 CMD /bin/bash
