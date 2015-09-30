@@ -1,3 +1,5 @@
+ENV REFRESHED_AT 2015-09-30
+
 FROM ubuntu:14.04
 MAINTAINER lukewpatterson
 
