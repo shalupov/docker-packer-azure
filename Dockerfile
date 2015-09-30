@@ -27,11 +27,7 @@ RUN wget --directory-prefix $HOME/downloads https://storage.googleapis.com/golan
   && tar --directory /usr/local --extract --gzip --file $HOME/downloads/$GO_DOWNLOAD \
   && mkdir --parents $HOME/go \
   && apt-get install --yes git mercurial meld \
-  && go get github.com/MSOpenTech/packer-azure/packer/builder/azure/driver_restapi \
-  && go get github.com/hashicorp/yamux \
-  && go get github.com/hashicorp/go-msgpack/codec \
-  && go install -tags 'restapi' github.com/MSOpenTech/packer-azure/packer/plugin/packer-builder-azure \
-  && go install github.com/MSOpenTech/packer-azure/packer/plugin/packer-provisioner-azure-custom-script-extension \
+  && go get github.com/MSOpenTech/packer-azure/packer/plugin/... \
   && mv $GOPATH/bin/* $PACKER_BIN_DIR
 
 # see https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server
